@@ -18,6 +18,7 @@ public class fragmentoNivel extends Fragment implements View.OnClickListener {
     private static final String NUM_BOTONES_NIVEL = "num botons de nivell";
     private Button btnMedio;
     private Button btnSuperior;
+
     private ArrayList<CicleFlorida> arrayRecibidoPorParametro;
     private int numBotonsRecibidoPorParametro;
 
@@ -68,8 +69,10 @@ public class fragmentoNivel extends Fragment implements View.OnClickListener {
         btnMedio= v.findViewById(R.id.btnMedio);
         btnSuperior= v.findViewById(R.id.btnSuperior);
 
+
         btnMedio.setOnClickListener(this);
         btnSuperior.setOnClickListener(this);
+
 
         if(numBotonsRecibidoPorParametro==1){
             btnMedio.setEnabled(true);

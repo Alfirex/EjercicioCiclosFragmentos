@@ -21,17 +21,32 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ClientViewHolder> 
     public ClientViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Creamos el View
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_ciclos,parent,false);
+
         // Retornamos el view
         return new ClientViewHolder(v);
     }
 
     // Obtenemos la posicion de cada uno y se lo seteamos y le pasamos la clase interna
     @Override
-    public void onBindViewHolder(ClientViewHolder holder, int position) {
+    public void onBindViewHolder(ClientViewHolder holder, final int position) {
         holder.tvTitulo.setText(aListado_ciclos.get(position).getTitol());
         holder.tvDesc.setText(aListado_ciclos.get(position).getDescripcio());
         holder.tvTipo.setText(aListado_ciclos.get(position).getTipus());
         holder.tvFam.setText(aListado_ciclos.get(position).getFamiliaProfessional());
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                aListado_ciclos.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+        holder.btnAñadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -47,6 +62,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ClientViewHolder> 
         private ImageButton btnImage;
         private CardView card_view;
         private int pos;
+        private ImageButton btnDelete, btnAñadir;
 
         public ClientViewHolder(View itemView) {
             super(itemView);
@@ -56,7 +72,8 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ClientViewHolder> 
             tvDesc = itemView.findViewById(R.id.tvDescripcion);
             tvTipo = itemView.findViewById(R.id.tvTipo);
             tvFam = itemView.findViewById(R.id.tvFamilia);
-
+            btnDelete = itemView.findViewById(R.id.imageButtonDelete);
+            btnAñadir = itemView.findViewById(R.id.imageButtonAñadir);
         }
     }
 }

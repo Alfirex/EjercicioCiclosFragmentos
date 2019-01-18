@@ -8,13 +8,12 @@
     android:orientation="vertical">
 
 
-
     <fragment
         android:id="@+id/fragmentoCiclos"
         android:name="prueba.jcp.jorge.fragmentosejerciciociclos.fragmentoBotones"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="3">
 
 
     </fragment>
@@ -23,16 +22,15 @@
         android:id="@+id/fragment_nivell"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="3">
 
     </FrameLayout>
 
-        <FrameLayout
-            android:id="@+id/fragment_llistat"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/fragment_llistat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"></FrameLayout>
 
 
 </LinearLayout>

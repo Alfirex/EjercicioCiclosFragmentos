@@ -9,12 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 
-public class FragmentoListado extends Fragment {
+public class FragmentoListado extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String LISTADO_FINAL = "listado final";
@@ -25,6 +27,9 @@ public class FragmentoListado extends Fragment {
     private RecyclerView recyclerView;
     private Adaptador adaptador;
     private LinearLayoutManager linear_Layout_Manager;
+    private ImageButton btnAñadir;
+
+
 
 
 
@@ -66,6 +71,7 @@ public class FragmentoListado extends Fragment {
         recyclerView = v.findViewById(R.id.ReycclerView);
         linear_Layout_Manager = new LinearLayoutManager(v.getContext());
         adaptador = new Adaptador(listadoRecibidoPorParametros);
+        btnAñadir = v.findViewById(R.id.imageButtonAñadir);
 
         recyclerView.setLayoutManager(linear_Layout_Manager);
         recyclerView.setAdapter(adaptador);
@@ -74,5 +80,8 @@ public class FragmentoListado extends Fragment {
     }
 
 
+    @Override
+    public void onClick(View view) {
 
+    }
 }
