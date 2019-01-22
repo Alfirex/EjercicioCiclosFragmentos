@@ -3,10 +3,12 @@ package prueba.jcp.jorge.fragmentosejerciciociclos;
 Hector PUTO,Jorte Cerezo
  */
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -187,8 +189,6 @@ public class MainActivity extends AppCompatActivity implements fragmentoBotones.
 
 
     }
-
-
     @Override
     public void filtrarTipoNivel(String nivel,ArrayList<CicleFlorida> listado) {
         ArrayList<CicleFlorida> arrayFiltradoPorNivel=new ArrayList<CicleFlorida>();
@@ -206,4 +206,5 @@ public class MainActivity extends AppCompatActivity implements fragmentoBotones.
         ft.replace(R.id.fragment_llistat,fl);
         ft.commit();
     }
+
 }

@@ -1,5 +1,8 @@
 package prueba.jcp.jorge.fragmentosejerciciociclos;
 
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class Adaptador extends RecyclerView.Adapter<Adaptador.ClientViewHolder> {
  private ArrayList<CicleFlorida> aListado_ciclos;

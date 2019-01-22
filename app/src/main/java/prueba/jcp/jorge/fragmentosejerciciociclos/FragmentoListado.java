@@ -1,11 +1,13 @@
 package prueba.jcp.jorge.fragmentosejerciciociclos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 
 public class FragmentoListado extends Fragment implements View.OnClickListener {
@@ -75,6 +80,7 @@ public class FragmentoListado extends Fragment implements View.OnClickListener {
 
         recyclerView.setLayoutManager(linear_Layout_Manager);
         recyclerView.setAdapter(adaptador);
+        btnAñadir.setOnClickListener(this);
 
         return v;
     }
@@ -82,6 +88,36 @@ public class FragmentoListado extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        if (view.getId()==R.id.imageButtonAñadir){
+            Intent intento = new Intent(view.getContext(), AnyadirCardSubActivity.class);
+            startActivityForResult(intento , 1);
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Comprueba que subactivity es, ya que asignamos un número cuando vamos a tal subactivity
+        if (requestCode == 1) {
+            // En el caso de que hay ido todo bien
+            if (resultCode == RESULT_OK) {
+                Bundle params = data.getExtras();
+                CicleFlorida oCiclesFlorida = params.getParcelable("objecte_ciclesFlorida");
 
+                String sTitulo = oCiclesFlorida.getTitol();
+                String sTipo = oCiclesFlorida.getTipus();
+                String sDescripcion = oCiclesFlorida.getDescripcio();
+                String sFamilia = oCiclesFlorida.getFamiliaProfessional();
+
+                Log.d("Prueba",sTitulo);
+                Log.d("Prueba",sTipo);
+                Log.d("Prueba",sDescripcion);
+                Log.d("Prueba",sFamilia);
+                listadoRecibidoPorParametros.add(new CicleFlorida(sFamilia, sTipo,sTitulo,sDescripcion));
+
+                for (CicleFlorida p : listadoRecibidoPorParametros) {
+                    Log.d("Prueba", "Muestra Array"+p.getTipus());
+                }
+
+            }
+        }
     }
 }
